@@ -1,0 +1,33 @@
+﻿<parameters>
+  <!-- msdeploy defined configuration-->
+  <parameter name="managedRuntimeVersion"
+             description="managedRuntimeVersion"
+             defaultValue="v4.0">
+    <parameterEntry kind="DeploymentObjectAttribute"
+                    scope="appPoolConfig"
+                    match="//@managedRuntimeVersion" />
+  </parameter>
+  <parameter name="username"
+             description="AppPool identity username"
+             defaultValue="domain\username">
+    <parameterEntry kind="DeploymentObjectAttribute"
+                    scope="processModel"
+                    match="/processModel/@userName" />
+  </parameter>
+  <parameter name="password"
+             description="AppPool identity password"
+             tags="password"
+             defaultValue="DefaultPassword">
+    <parameterEntry kind="DeploymentObjectAttribute"
+                    scope="processModel"
+                    match="/processModel/@password" />
+  </parameter>
+  <!-- application configuration -->
+  <parameter name="debug"
+             description="Parameter for debug"
+             defaultValue="true">
+    <parameterEntry kind="XmlFile"
+                    scope="web\.config$"
+                    match="/configuration/system.web/compilation/@debug" />
+  </parameter>
+</parameters>
