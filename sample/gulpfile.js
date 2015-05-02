@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var svarog = require('svarog');
+var svarog = require('../');
 
 var buildConfig = {
   stdout: true,

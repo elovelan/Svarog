@@ -9,9 +9,10 @@
   "author": "Aleksandar Adamovic",
   "license": "MIT",
   "devDependencies": {
-    "gulp": "^3.8.11"
-  },
-  "dependencies": {
-    "svarog": "0.0.2"
+    "gulp": "^3.8.11",
+    "gulp-msbuild": "^0.2.9",
+    "gulp-util": "^3.0.4",
+    "lodash": "^3.8.0",
+    "through2": "^0.6.5"
   }
 }
