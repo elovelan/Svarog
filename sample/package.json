@@ -12,6 +12,6 @@
     "gulp": "^3.8.11"
   },
   "dependencies": {
-    "svarog": "0.0.1"
+    "svarog": "0.0.2"
   }
 }
