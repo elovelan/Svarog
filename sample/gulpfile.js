@@ -23,6 +23,6 @@ svarog(gulp, buildConfig);
 
 gulp.task('build', ['svarogBuildSolution'], function () {});
 
-gulp.task('stage', ['stageWebArtifacts'], function () {});
+gulp.task('stage', ['svarogStageWebArtifacts'], function () {});
 
 gulp.task('deploy', ['deployWebApp'], function () {});

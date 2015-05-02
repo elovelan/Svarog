@@ -1,5 +1,4 @@
 var through = require('through2');
-var msbuild = require("gulp-msbuild");
 var plug = require('gulp-load-plugins')();
 var object = require('lodash/object');
 var exec = require('child_process').exec;
@@ -7,18 +6,12 @@ var exec = require('child_process').exec;
 var log = plug.util.log;
 
 var build = require('./libs/build');
+var stage = require('./libs/stage');
 
 module.exports = function (gulp, config) {
 
   build(gulp, config);
-
-  gulp.task('stageWebArtifacts', function () {
-
-    var stagingConfig = getStagingConfig(config);
-
-    return gulp.src(stagingConfig.webProjectPath)
-      .pipe(msbuild(stagingConfig))
-  });
+  stage(gulp, config);
 
   function deployWebApp(config) {
 
@@ -53,25 +46,4 @@ module.exports = function (gulp, config) {
     return gulp.src(config.deployment.artifactsDir + '/*.cmd')
       .pipe(deployWebApp(config.deployment));
   });
-
-  function getStagingConfig(config) {
-    var defaultStagingConfig = {
-      stdout: true,
-      toolsVersion: 12,
-      targets: ['Package'],
-      properties: {
-        outdir: '../+staging',
-        DeployEncryptKey: 'test1',
-        IncludeAppPool: true,
-        IncludeAppPool: true,
-        IncludeIisSettings: true,
-        DestinationIisVersion: 8,
-        UseMsdeployExe: true
-      }
-    };
-
-    //Override default config with the config defined in inheriting gulp file
-    //Very hacky - but good enough to get it going
-    return object.merge(defaultStagingConfig, config, config.staging);
-  }
 };
