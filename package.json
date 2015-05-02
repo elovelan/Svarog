@@ -1,6 +1,6 @@
 {
   "name": "svarog",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": ".Net Build and Web Deploy",
   "main": "./src/index.js",
   "private": true,
@@ -14,8 +14,10 @@
   "author": "Aleksandar Adamovic",
   "license": "MIT",
   "dependencies": {
+    "gulp-load-plugins": "^0.10.0",
     "gulp-msbuild": "^0.2.9",
     "gulp-util": "^3.0.4",
-    "gulp-load-plugins": "^0.10.0"
+    "lodash": "^3.8.0",
+    "underscore": "^1.8.3"
   }
 }
