@@ -1,6 +1,6 @@
 {
   "name": "svarog",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": ".Net Build and Web Deploy",
   "main": "./src/index.js",
   "private": true,
