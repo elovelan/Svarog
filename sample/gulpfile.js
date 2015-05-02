@@ -25,4 +25,4 @@ gulp.task('build', ['svarogBuildSolution'], function () {});
 
 gulp.task('stage', ['svarogStageWebArtifacts'], function () {});
 
-gulp.task('deploy', ['deployWebApp'], function () {});
+gulp.task('deploy', ['svarogDeployWebApp'], function () {});
