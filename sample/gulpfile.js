@@ -21,7 +21,7 @@ var buildConfig = {
 
 svarog(gulp, buildConfig);
 
-gulp.task('build', ['buildSolution'], function () {});
+gulp.task('build', ['svarogBuildSolution'], function () {});
 
 gulp.task('stage', ['stageWebArtifacts'], function () {});
 

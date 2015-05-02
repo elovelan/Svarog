@@ -6,15 +6,11 @@ var exec = require('child_process').exec;
 
 var log = plug.util.log;
 
-module.exports = function (gulp, config) {
-  var config = config;
+var build = require('./libs/build');
 
-  gulp.task("buildSolution", function () {
-    var solutionPath = config.solutionPath || './*.sln';
-    log('Building ' + solutionPath);
-    return gulp.src(solutionPath)
-      .pipe(msbuild(config));
-  });
+module.exports = function (gulp, config) {
+
+  build(gulp, config);
 
   gulp.task('stageWebArtifacts', function () {
 
