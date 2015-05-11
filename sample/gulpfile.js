@@ -19,10 +19,18 @@ var buildConfig = {
   }
 };
 
-svarog(gulp, buildConfig);
+gulp.task('build', function () {
+  var solutionPath = buildConfig.solutionPath;
+  return gulp.src(solutionPath)
+    .pipe(svarog.build(buildConfig));
+});
 
-gulp.task('build', ['svarogBuildSolution'], function () {});
+gulp.task('stage', function () {
+  return gulp.src(buildConfig.staging.webProjectPath)
+    .pipe(svarog.stage(buildConfig))
+});
 
-gulp.task('stage', ['svarogStageWebArtifacts'], function () {});
-
-gulp.task('deploy', ['svarogDeployWebApp'], function () {});
+gulp.task('deploy', function () {
+  return gulp.src(buildConfig.deployment.artifactsDir + '/*.cmd')
+    .pipe(svarog.deploy(buildConfig.deployment));
+});

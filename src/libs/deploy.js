@@ -2,36 +2,28 @@ var through = require('through2');
 var msbuild = require('gulp-msbuild');
 var exec = require('child_process').exec;
 
-module.exports = function (gulp, config) {
+module.exports = function (config) {
+  var stream = through.obj(function (file, enc, callback) {
+    var self = this;
+    if (file.isNull()) {
+      self.push(file);
+      return callback();
+    }
 
-  gulp.task('svarogDeployWebApp', function () {
-    return gulp.src(config.deployment.artifactsDir + '/*.cmd')
-      .pipe(deployWebApp(config.deployment));
-  });
+    var pathname = file.path;
 
-  function deployWebApp(config) {
-    var stream = through.obj(function (file, enc, callback) {
-      var self = this;
-      if (file.isNull()) {
-        self.push(file);
-        return callback();
-      }
-
-      var pathname = file.path;
-
-      var command = [
+    var command = [
         'powershell',
         pathname,
         config.whatif ? '/T' : '/Y',
         '/M:' + config.remoteComputer
       ].join(' ');
 
-      exec(command, function (err, stdout, stderr) {
-        console.log(stdout);
-        console.log(stderr);
-      });
+    exec(command, function (err, stdout, stderr) {
+      console.log(stdout);
+      console.log(stderr);
     });
+  });
 
-    return stream;
-  };
+  return stream;
 };
