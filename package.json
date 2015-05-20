@@ -17,6 +17,7 @@
     "gulp-msbuild": "^0.2.9",
     "gulp-util": "^3.0.4",
     "lodash": "^3.8.0",
-    "through2": "^0.6.5"
+    "through2": "^0.6.5",
+    "xmlpoke": "^0.1.9"
   }
 }

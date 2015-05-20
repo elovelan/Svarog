@@ -20,6 +20,10 @@ var buildConfig = {
   }
 };
 
+var paramValues = {
+  "debug": "false"
+};
+
 gulp.task('build', function () {
   var solutionPath = buildConfig.solutionPath;
   return gulp.src(solutionPath)
@@ -34,5 +38,6 @@ gulp.task('stage', function () {
 
 gulp.task('deploy', function () {
   return gulp.src(buildConfig.deployment.artifactsDir + '/*')
+    .pipe(svarog.setParams(paramValues))
     .pipe(svarog.deploy(buildConfig.deployment));
 });
