@@ -5,10 +5,10 @@
 
 Very early build
 
-Gulp tasks that builds, stages and deploys .Net Web Applications
+Gulp tasks that builds, packages and deploys .Net Web Applications
 
 Refer to sample project:
 
 `gulp build` - Restores the NuGet packages and builds the solution  
-`gulp stage` - Stages and Creates WebDeploy package  
+`gulp package` - Creates WebDeploy package  
 `gulp deploy` - Pokes the SetParameters file and calls webdeploy  

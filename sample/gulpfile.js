@@ -6,7 +6,7 @@ var buildConfig = {
   toolsVersion: 12,
   solutionPath: './SampleWebApp.sln',
   nugetPath: './.nuget/nuget.exe',
-  staging: {
+  package: {
     webProjectPath: './SampleWebApp/SampleWebApp.csproj',
     properties: {
       dir: '../+staging',
@@ -31,9 +31,9 @@ gulp.task('build', function () {
     .pipe(svarog.build(buildConfig));
 });
 
-gulp.task('stage', function () {
-  return gulp.src(buildConfig.staging.webProjectPath)
-    .pipe(svarog.stage(buildConfig))
+gulp.task('package', function () {
+  return gulp.src(buildConfig.package.webProjectPath)
+    .pipe(svarog.package(buildConfig))
 });
 
 gulp.task('deploy', function () {
