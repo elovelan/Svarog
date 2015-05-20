@@ -5,6 +5,7 @@ var buildConfig = {
   stdout: true,
   toolsVersion: 12,
   solutionPath: './SampleWebApp.sln',
+  nugetPath: './.nuget/nuget.exe',
   staging: {
     webProjectPath: './SampleWebApp/SampleWebApp.csproj',
     properties: {
@@ -22,6 +23,7 @@ var buildConfig = {
 gulp.task('build', function () {
   var solutionPath = buildConfig.solutionPath;
   return gulp.src(solutionPath)
+    .pipe(svarog.nugetRestore(buildConfig))
     .pipe(svarog.build(buildConfig));
 });
 
