@@ -5,7 +5,7 @@ var exec = require('child_process').exec;
 module.exports = function (config) {
   var stream = through.obj(function (file, enc, callback) {
     var self = this;
-    if (file.isNull()) {
+    if (file.isNull() || file.path.toLowerCase().indexOf('deploy.cmd') === -1) {
       self.push(file);
       return callback();
     }

@@ -33,6 +33,6 @@ gulp.task('stage', function () {
 });
 
 gulp.task('deploy', function () {
-  return gulp.src(buildConfig.deployment.artifactsDir + '/*.cmd')
+  return gulp.src(buildConfig.deployment.artifactsDir + '/*')
     .pipe(svarog.deploy(buildConfig.deployment));
 });
