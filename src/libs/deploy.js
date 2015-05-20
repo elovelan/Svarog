@@ -23,6 +23,9 @@ module.exports = function (config) {
       console.log(stdout);
       console.log(stderr);
     });
+
+    this.push(file);
+    callback();
   });
 
   return stream;
